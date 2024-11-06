@@ -1,6 +1,4 @@
-﻿
-
-using ToDoList.Models.Dtos.Users.Requests;
+﻿using ToDoList.Models.Dtos.Users.Requests;
 using ToDoList.Models.Entities;
 
 namespace ToDoList.Service.Abstracts;

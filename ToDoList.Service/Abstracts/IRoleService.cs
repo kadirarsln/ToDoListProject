@@ -1,6 +1,4 @@
-﻿
-
-namespace ToDoList.Service.Abstracts;
+﻿namespace ToDoList.Service.Abstracts;
 
 public interface IRoleService
 {

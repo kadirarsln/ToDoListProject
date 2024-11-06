@@ -15,7 +15,7 @@ public class AuthenticationService(IUserService _userService, IJwtService _jwtSe
         return new ReturnModel<TokenResponseDto>
         {
             Data = tokenResponse,
-            Message = "Giriş Başarılı",
+            Message = "Login Success",
             StatusCode = 200,
             Success = true,
         };
@@ -29,7 +29,7 @@ public class AuthenticationService(IUserService _userService, IJwtService _jwtSe
         return new ReturnModel<TokenResponseDto>
         {
             Data = tokenResponse,
-            Message = "Kullanıcı Kaydedildi",
+            Message = "User Registered",
             StatusCode = 200,
             Success = true
         };

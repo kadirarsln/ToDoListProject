@@ -31,7 +31,7 @@ public class UserService(UserManager<User> _userManager, UserBusinessRules busin
 
         var result = await _userManager.DeleteAsync(user);
         businessRules.CheckForIdentityResult(result);
-        return "Kullanıcı Silindi";
+        return "User Deleted";
     }
 
     public async Task<User> GetByEmailAsync(string email)

@@ -61,6 +61,7 @@ public sealed class CategoryService(ICategoryRepository _categoryRepository, IMa
     {
         Category category = await _categoryRepository.GetByIdAsync(id);
         businessRules.CategoryIsNullCheck(category);
+
         return new ReturnModel<NoData>
         {
             Success = true,
@@ -86,7 +87,5 @@ public sealed class CategoryService(ICategoryRepository _categoryRepository, IMa
             Message = "Category Updated.",
             StatusCode = 200
         };
-
-
     }
 }

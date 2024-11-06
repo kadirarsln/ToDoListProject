@@ -34,6 +34,7 @@ public sealed class JwtService : IJwtService
             expires: accessTokenExpiration,
             signingCredentials: sc
             );
+
         var handler = new JwtSecurityTokenHandler();
         string token = handler.WriteToken(jwtSecurityToken);
 

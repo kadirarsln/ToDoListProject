@@ -3,7 +3,6 @@ using ToDoList.Models.Dtos.ToDos.Requests;
 using ToDoList.Models.Dtos.ToDos.Responses;
 
 namespace ToDoList.Service.Abstracts;
-
 public interface IToDoService
 {
     Task<ReturnModel<List<ToDoResponseDto>>> GetAllAsync();

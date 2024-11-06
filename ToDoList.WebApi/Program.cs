@@ -28,7 +28,6 @@ builder.Services.AddIdentity<User, IdentityRole>(opt =>
 }).AddEntityFrameworkStores<BaseDbContext>();
 
 var tokenOption = builder.Configuration.GetSection("TokenOption").Get<TokenOption>();
-
 builder.Services.AddAuthentication(opt =>
 {
     opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

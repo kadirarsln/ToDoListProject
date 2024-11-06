@@ -1,8 +1,11 @@
 ﻿using Core.Tokens.Services;
+using FluentValidation.AspNetCore;
+using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using ToDoList.Service.Abstracts;
@@ -18,10 +21,7 @@ namespace ToDoList.Service
     {
         public static IServiceCollection AddServiceDependencies(this IServiceCollection services)
         {
-
-            services.AddAutoMapper(typeof(ToDoMappingProfile));
-            //services.AddAutoMapper(typeof(CategoryMappingProfile));
-
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             services.AddScoped<ToDosBusinessRules>();
             services.AddScoped<UserBusinessRules>();
@@ -33,6 +33,9 @@ namespace ToDoList.Service
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<DecoderService>();
+
+            services.AddFluentValidationAutoValidation();
+            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
             return services;
         }
