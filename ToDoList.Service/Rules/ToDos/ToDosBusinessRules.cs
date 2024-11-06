@@ -1,6 +1,5 @@
 ﻿using Core.Exceptions;
 using ToDoList.DataAcces.Abstracts;
-using ToDoList.DataAcces.Concretes;
 using ToDoList.Models.Entities;
 
 namespace ToDoList.Service.Rules.ToDos
