@@ -14,6 +14,11 @@ namespace ToDoList.Service.Concretes
     {
         public async Task<ReturnModel<ToDoResponseDto>> AddAsync(CreateToDoRequest create, string userId)
         {
+            businessRules.ToDoTitleCheck(create.Title);
+            businessRules.ToDoPastDateCheck(create.StartDate);
+            businessRules.ToDoDatesCheck(create.StartDate, create.EndDate);
+            businessRules.ToDoCategoryCheckAsync(create.CategoryId);
+
             ToDo createdToDo = _mapper.Map<ToDo>(create);
             createdToDo.Id = Guid.NewGuid();
             createdToDo.UserId = userId;
@@ -25,7 +30,7 @@ namespace ToDoList.Service.Concretes
             return new ReturnModel<ToDoResponseDto>
             {
                 Data = responseDto,
-                Message = "ToDo Eklendi",
+                Message = "ToDo Added.",
                 StatusCode = 200,
                 Success = true
             };
@@ -52,7 +57,7 @@ namespace ToDoList.Service.Concretes
             return new ReturnModel<List<ToDoResponseDto>>
             {
                 Data = responses,
-                Message = string.Empty,
+                Message = "ToDos Listed.",
                 StatusCode = 200,
                 Success = true
             };
@@ -76,14 +81,14 @@ namespace ToDoList.Service.Concretes
         public async Task<ReturnModel<ToDoResponseDto>> GetByIdAsync(Guid id)
         {
             var todo = await _toDoRepository.GetByIdAsync(id);
-            businessRules.ToDoIsNullCheck(todo);
+            businessRules.ToDoIsNullCheck(todo, id);
 
             var responseDto = _mapper.Map<ToDoResponseDto>(todo);
 
             return new ReturnModel<ToDoResponseDto>
             {
                 Data = responseDto,
-                Message = string.Empty,
+                Message = "ToDo Found",
                 StatusCode = 200,
                 Success = true
             };
@@ -92,7 +97,7 @@ namespace ToDoList.Service.Concretes
         public async Task<ReturnModel<ToDoResponseDto>> RemoveAsync(Guid id)
         {
             var todo = await _toDoRepository.GetByIdAsync(id);
-            businessRules.ToDoIsNullCheck(todo);
+            businessRules.ToDoIsNullCheck(todo, id);
 
             var deletedPost = await _toDoRepository.RemoveAsync(todo);
             var responseDto = _mapper.Map<ToDoResponseDto>(deletedPost);
@@ -100,7 +105,7 @@ namespace ToDoList.Service.Concretes
             return new ReturnModel<ToDoResponseDto>
             {
                 Data = responseDto,
-                Message = "ToDo Silindi",
+                Message = "ToDo Deleted",
                 StatusCode = 200,
                 Success = true
             };
@@ -109,6 +114,12 @@ namespace ToDoList.Service.Concretes
         public async Task<ReturnModel<ToDoResponseDto>> UpdateAsync(UpdateToDoRequest updateToDo)
         {
             var todo = await _toDoRepository.GetByIdAsync(updateToDo.Id);
+            businessRules.ToDoIsNullCheck(todo, updateToDo.Id);
+
+            businessRules.ToDoTitleCheck(updateToDo.Title);
+            businessRules.ToDoPastDateCheck(updateToDo.StartDate);
+            businessRules.ToDoDatesCheck(updateToDo.StartDate, updateToDo.EndDate);
+            businessRules.ToDoCategoryCheckAsync(updateToDo.CategoryId);
 
             ToDo update = new ToDo
             {
@@ -130,7 +141,7 @@ namespace ToDoList.Service.Concretes
             return new ReturnModel<ToDoResponseDto>
             {
                 Data = responseDto,
-                Message = "ToDo Güncellendi",
+                Message = "ToDo Updated",
                 StatusCode = 200,
                 Success = true
             };

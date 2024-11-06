@@ -13,16 +13,18 @@ public sealed class CategoryService(ICategoryRepository _categoryRepository, IMa
 {
     public async Task<ReturnModel<NoData>> AddAsync(CreateCategoryRequestDto createDto)
     {
+        businessRules.CategoryNameCheck(createDto.Name);
+        await businessRules.CategoryNameUniqueCheck(createDto.Name);
+
         Category category = _mapper.Map<Category>(createDto);
         await _categoryRepository.AddAsync(category);
 
         return new ReturnModel<NoData>
         {
             Success = true,
-            Message = "Kategori Eklendi.",
+            Message = "Category Added.",
             StatusCode = 200
         };
-
     }
 
     public async Task<ReturnModel<List<CategoryResponseDto>>> GetAllAsync()
@@ -50,7 +52,7 @@ public sealed class CategoryService(ICategoryRepository _categoryRepository, IMa
         {
             Success = true,
             Data = responseDto,
-            Message = "Kategori Getirildi",
+            Message = "Category Found",
             StatusCode = 200
         };
     }
@@ -62,7 +64,7 @@ public sealed class CategoryService(ICategoryRepository _categoryRepository, IMa
         return new ReturnModel<NoData>
         {
             Success = true,
-            Message = "Kategori Silindi",
+            Message = "Category Deleted",
             StatusCode = 200
         };
     }
@@ -72,13 +74,16 @@ public sealed class CategoryService(ICategoryRepository _categoryRepository, IMa
         Category category = await _categoryRepository.GetByIdAsync(updateCategory.Id);
         businessRules.CategoryIsNullCheck(category);
 
-        category.Name = updateCategory.Name;        
+        businessRules.CategoryNameCheck(updateCategory.Name);
+        await businessRules.CategoryNameUniqueCheck(updateCategory.Name);
+
+        category.Name = updateCategory.Name;
         await _categoryRepository.UpdateAsync(category);
 
         return new ReturnModel<NoData>
         {
             Success = true,
-            Message = "Kategori Güncellendi.",
+            Message = "Category Updated.",
             StatusCode = 200
         };
 
