@@ -1,4 +1,7 @@
 ﻿
 namespace ToDoList.Models.Dtos.Categories.Requests;
 
-public sealed record  CreateCategoryRequestDto(string Name);
+public sealed record CreateCategoryRequestDto
+{
+    public string Name { get; init; }
+}

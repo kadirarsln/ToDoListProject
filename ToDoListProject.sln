@@ -3,15 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoList.Models", "ToDoList.Models\ToDoList.Models.csproj", "{C70DDC4B-9000-46A9-A663-DD97F663A144}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoList.Models", "ToDoList.Models\ToDoList.Models.csproj", "{C70DDC4B-9000-46A9-A663-DD97F663A144}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoList.WebApi", "ToDoList.WebApi\ToDoList.WebApi.csproj", "{4BD2437B-50CC-49A1-9CD4-61FE839A03D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoList.WebApi", "ToDoList.WebApi\ToDoList.WebApi.csproj", "{4BD2437B-50CC-49A1-9CD4-61FE839A03D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoList.DataAcces", "ToDoList.DataAcces\ToDoList.DataAcces.csproj", "{AA5DC2D9-07A5-49D2-B9F8-D0648E494B9A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoList.DataAcces", "ToDoList.DataAcces\ToDoList.DataAcces.csproj", "{AA5DC2D9-07A5-49D2-B9F8-D0648E494B9A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{45876060-9652-4D4B-9E3D-F72C78694778}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{45876060-9652-4D4B-9E3D-F72C78694778}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoList.Service", "ToDoList.Service\ToDoList.Service.csproj", "{385918D7-B95E-46F7-87EF-28965FE6AEC5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoList.Service", "ToDoList.Service\ToDoList.Service.csproj", "{385918D7-B95E-46F7-87EF-28965FE6AEC5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{AD9ED8B2-E8CC-4186-BCD3-1E6B6A7458B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Tests", "Service.Tests\Service.Tests.csproj", "{986F62AF-080A-4CBD-A02B-2403699EF764}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,9 +43,16 @@ Global
 		{385918D7-B95E-46F7-87EF-28965FE6AEC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{385918D7-B95E-46F7-87EF-28965FE6AEC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{385918D7-B95E-46F7-87EF-28965FE6AEC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{986F62AF-080A-4CBD-A02B-2403699EF764}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{986F62AF-080A-4CBD-A02B-2403699EF764}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{986F62AF-080A-4CBD-A02B-2403699EF764}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{986F62AF-080A-4CBD-A02B-2403699EF764}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{986F62AF-080A-4CBD-A02B-2403699EF764} = {AD9ED8B2-E8CC-4186-BCD3-1E6B6A7458B6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8801EBF2-47A1-4DF5-8006-9CC6F1C49908}
